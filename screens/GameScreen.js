@@ -6,6 +6,7 @@ import NumberContainer from "../components/NumberContainer";
 import Card from "../components/Card";
 import DefaultStyles from "../constants/default-styles";
 import MainButton from "../components/MainButton"
+import Colours from '../constants/colours'
 
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -21,8 +22,8 @@ const generateRandomBetween = (min, max, exclude) => {
 
 const renderListItem = (value, numOfRound) => {
   return <View key={value} style={styles.listItem}>
-    <Text style={DefaultStyles.bodyText}>#{numOfRound}</Text>
-    <Text style={DefaultStyles.bodyText}>{value}</Text>
+    <Text style={{...styles.listItemText,...DefaultStyles.bodyText}}>#{numOfRound}</Text>
+    <Text style={{...styles.listItemText,...DefaultStyles.bodyText}}>{value}</Text>
   </View>
 };
 
@@ -115,6 +116,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width:'60%'
+  },
+  listItemText: {
+    color:Colours.primary
   }
 });
 
