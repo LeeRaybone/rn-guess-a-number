@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, Text, StyleSheet, Alert, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Alert, ScrollView, FlatList } from "react-native";
 import { Ionicons } from '@expo/vector-icons'
 
 import NumberContainer from "../components/NumberContainer";
@@ -25,7 +25,6 @@ const renderListItem = (value, numOfRound) => {
     <Text style={DefaultStyles.bodyText}>{value}</Text>
   </View>
 };
-
 
 const GameScreen = (props) => {
   const initialGuess = generateRandomBetween(1, 100, props.userChoice);
@@ -64,7 +63,6 @@ const GameScreen = (props) => {
       currentGuess
     );
     setCurrentGuess(nextNumber);
-    //setRounds((curRounds) => curRounds + 1);
     setPastGuesses(curPastGuesses => [nextNumber, ...curPastGuesses]);
   };
 
@@ -77,9 +75,9 @@ const GameScreen = (props) => {
         <MainButton onPress={nextGuessHandler.bind(this, "greater")}><Ionicons name='md-add' size={24} color="white"/></MainButton>
       </Card>
       <View style={styles.listContainer}>
-        <ScrollView contentContainerStyle={styles.list}>
-          {pastGuesses.map((guess, index) => renderListItem(guess, pastGuesses.length - index))} 
-          </ScrollView>
+       <ScrollView contentContainerStyle={styles.list}>
+          {pastGuesses.map((guess, index) => renderListItem(guess, pastGuesses.length - index))}
+  </ScrollView>
         </View>
     </View>
   );
